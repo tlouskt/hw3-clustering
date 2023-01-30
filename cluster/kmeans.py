@@ -21,6 +21,12 @@ class KMeans:
                 the maximum number of iterations before quitting model fit
         """
 
+        self.k = k
+        if k <= 0:
+            raise ValueError(" k must be > 0")
+        self.tol = tol
+        self.max_iter = max_iter
+
     def fit(self, mat: np.ndarray):
         """
         Fits the kmeans algorithm onto a provided 2D matrix.
@@ -36,6 +42,13 @@ class KMeans:
             mat: np.ndarray
                 A 2D matrix where the rows are observations and columns are features
         """
+        #check for number of observations
+        if len(mat) < self.k:
+            raise ValueError("There are more clusters than observations")
+        
+
+
+
 
     def predict(self, mat: np.ndarray) -> np.ndarray:
         """
